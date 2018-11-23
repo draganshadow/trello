@@ -207,6 +207,11 @@ func (c *Client) CreateCard(card *Card, extraArgs Arguments) error {
 	return err
 }
 
+func (c *Card) Delete(args Arguments) error {
+	path := fmt.Sprintf("cards/%s", c.ID)
+	return c.client.Delete(path, Defaults(), nil)
+}
+
 func (l *List) AddCard(card *Card, extraArgs Arguments) error {
 	path := fmt.Sprintf("lists/%s/cards", l.ID)
 	args := Arguments{
